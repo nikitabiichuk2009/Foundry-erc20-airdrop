@@ -79,9 +79,7 @@ contract AirTokenTest is Test {
 
         vm.prank(bob);
         vm.expectRevert(
-            abi.encodeWithSelector(
-                IERC20Errors.ERC20InsufficientBalance.selector, bob, INITIAL_BALANCE, transferAmount
-            )
+            abi.encodeWithSelector(IERC20Errors.ERC20InsufficientBalance.selector, bob, INITIAL_BALANCE, transferAmount)
         );
         airToken.transfer(alice, transferAmount);
     }
