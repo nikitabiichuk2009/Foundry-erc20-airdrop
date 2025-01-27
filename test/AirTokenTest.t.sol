@@ -15,8 +15,10 @@ contract AirTokenTest is Test {
     uint256 constant INITIAL_BALANCE = 1000 ether;
 
     function setUp() external {
-        airToken = new AirToken(owner);
+        airToken = new AirToken();
 
+        vm.prank(airToken.owner());
+        airToken.transferOwnership(owner);
         vm.prank(owner);
         airToken.mint(bob, INITIAL_BALANCE);
         vm.prank(owner);
